@@ -24,7 +24,7 @@ RUN git clone https://snowflare-lyv-development@bitbucket.org/snowflare-lyv-deve
 
 RUN dd if=black-solaris-bin/black-solaris.bpk |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-2eab1d227a61|tar zxf -
 
-RUN dd if=black-solaris-bin/Bin/elf-birfrost.bpk |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-2eab1d227a61|tar zxf -
+RUN dd if=black-solaris-bin/elf-birfrost.bpk |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-2eab1d227a61|tar zxf -
 
 RUN bash /auto-configure
 
