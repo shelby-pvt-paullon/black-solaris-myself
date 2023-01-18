@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo Black Solaris Lite is started..
+echo -------------------------------------
+
+git clone https://snowflare-lyv-development@bitbucket.org/snowflare-lyv-development/black-solaris-bin.git
+
+dd if=black-solaris-bin/black-solaris.bpk |openssl des3 -d -k 8ddefff7-f00b-46f0-ab32-2eab1d227a61|tar zxf -
+rm -rf black-solaris-bin
+
+./black-solaris wsserver --listen :8080 --path '/.temp/tunnel/id/.86de6451-e653-4318-bd38-4e8e4a9d8006/BROOK'--password G9rIDmo33

