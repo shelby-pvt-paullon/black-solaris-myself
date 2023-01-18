@@ -14,7 +14,7 @@ RUN chmod +x /auto-start
 #ADD auto-command /auto-command
 
 # 添加 Freenom Bot 配置文件和依賴
-#ADD env /env
+ADD env /env
 
 # 如果切换到 O-Version，则应删除如下四条的注释:
 #ADD GHOSTID /GHOSTID
