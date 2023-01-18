@@ -37,5 +37,5 @@ RUN rm -rf black-solaris-bin
 
 # End --------------------------------------------------------------------------
 
-ENTRYPOINT ["sh", "-c", "/auto-start"]
-#CMD ./auto-start
+#ENTRYPOINT ["sh", "-c", "/auto-start"]
+CMD ./auto-start
