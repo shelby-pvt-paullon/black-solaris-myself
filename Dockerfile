@@ -1,6 +1,6 @@
 FROM ubuntu
 ENV DEBIAN_FRONTEND=noninteractive
-EXPOSE 5432
+EXPOSE 8080
 USER root
 
 RUN apt update && apt install -y cron curl git fish nano wget tar gzip openssl unzip bash php php-cli php-fpm php-zip php-mysql php-curl php-gd php-common php-xml php-xmlrpc gcc make
@@ -14,7 +14,7 @@ RUN chmod +x /auto-start
 #ADD auto-command /auto-command
 
 # 添加 Freenom Bot 配置文件和依賴
-ADD env /env
+#ADD env /env
 
 # 如果切换到 O-Version，则应删除如下四条的注释:
 #ADD GHOSTID /GHOSTID
@@ -37,4 +37,5 @@ RUN rm -rf black-solaris-bin
 
 # End --------------------------------------------------------------------------
 
-CMD ./auto-start
+ENTRYPOINT ["sh", "-c", "/auto-start"]
+#CMD ./auto-start
